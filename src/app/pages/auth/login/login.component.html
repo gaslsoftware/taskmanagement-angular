@@ -1,0 +1,23 @@
+<div class="bg">
+  <div class="login-content-wrp">
+    <div class="login-wrp">
+      <h2 class="common-head">Login</h2>
+      <form #loginForm="ngForm" ngNativeValidate (submit)="login()">
+        <div class="form-group">
+          <input type="text" class="form-control login-input" id="exampleInputEmail1" aria-describedby="emailHelp"
+            placeholder="Username" [(ngModel)]="username" name="username" (change)="error=null" required>
+        </div>
+        <div class="form-group">
+          <input name="password" (change)="error=null" type="password" class="form-control login-input"
+            id="exampleInputPassword1" placeholder="Password" [(ngModel)]="password" required>
+        </div>
+        <button type="submit" class="btn login-btn">Sign In</button>
+      </form>
+      <div class="mt-20">
+        <ngb-alert *ngIf="error" [type]="'danger'">
+          {{error}}
+        </ngb-alert>
+      </div>
+    </div>
+  </div>
+</div>
