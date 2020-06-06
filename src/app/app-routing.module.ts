@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { LoginComponent } from './pages/auth/login/login.component';
 import { MainComponent } from './main/main.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
+import { AuthGuardService } from './services/guard/auth-guard.service';
 
 
 const routes: Routes = [{
@@ -21,7 +22,7 @@ const routes: Routes = [{
     {
       path: 'dashboard',
       component: DashboardComponent,
-      // canActivate: [AuthGuardService]
+      canActivate: [AuthGuardService]
     },
   ]
 }

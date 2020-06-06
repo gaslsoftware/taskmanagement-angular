@@ -34,13 +34,17 @@ export class LoginComponent implements OnInit {
     );
     this.dataService.parseApiCall(ApiConstants.URL.LOGIN, 'post', data, ApiConstants.COMMON_HEADER)
       .subscribe(res => {
+        if(res['jwt'] != null)
+        {
         const currentTimeStamp = Math.floor(new Date().getTime() / 1000.0);
         //const time = currentTimeStamp + res['expires_in'];
         console.log(res);
+        console.log(res['jwt']);
         this.storageService.setSessionStorage('accessToken', res['jwt']);
         // this.storageService.setSessionStorage('refresh_token', res['refresh_token']);
         // this.storageService.setSessionStorage('expirein', time);
         this.router.navigateByUrl('dashboard');
+        }
       }, (err: HttpErrorResponse) => {
         //   this.buttonClickStatus = true;
         console.log(err.status);
