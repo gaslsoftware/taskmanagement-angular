@@ -17,6 +17,7 @@ export class LoginComponent implements OnInit {
   alert: any;
   type: string;
   error: string;
+  loginerror : string;
   constructor(private router: Router,
     // service to parse all api calls
     private dataService: DataService,
@@ -48,11 +49,14 @@ export class LoginComponent implements OnInit {
       }, (err: HttpErrorResponse) => {
         //   this.buttonClickStatus = true;
         console.log(err.status);
-        if (err.status === 401) {
+        console.log("Something went wrong1");
+        if (err.status === 401 || err.status === 403) {
+          console.log("Something went wrong");
           this.type = 'danger'
           this.error = 'Invalid username or password';
           setTimeout(() => this.error = null, 5000);
         } else {
+          console.log("Something went wrong1");
           this.type = 'danger';
           this.error = 'Something went wrong';
           setTimeout(() => this.error = null, 5000);
