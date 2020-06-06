@@ -10,6 +10,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule } from '@angular/forms';
 import { AuthModule } from './pages/auth/auth.module';
 import { MainComponent } from './main/main.component';
+import { DashboardModule } from './pages/dashboard/dashboard.module';
+
 
 @NgModule({
   declarations: [
@@ -24,6 +26,7 @@ import { MainComponent } from './main/main.component';
     LoadingBarModule,
     NgbModule,
     FormsModule,
+    DashboardModule,
     AuthModule
   ],
   providers: [],
