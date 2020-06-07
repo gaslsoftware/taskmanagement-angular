@@ -1,0 +1,20 @@
+.tsk:hover {
+    /* background-color: yellow; */
+    background-color: gainsboro;
+    /* border-left: solid 10px green; */
+    padding-left: 10px;
+  }
+  .selectedd
+  {
+      /* background-color: blue; */
+      /* border-left: solid 10px green; */
+      border-left: solid 10px #0275d8;
+      padding-left: 15px;
+      background-color: gainsboro;
+  }
+
+  .tsk
+  {
+      border-bottom: 1px solid gainsboro ;
+      padding-bottom: 5px;
+  }

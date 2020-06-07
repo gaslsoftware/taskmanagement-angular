@@ -6,6 +6,7 @@ export const ApiConstants = {
     URL : {
         LOGIN: `${environment.API_ENDPOINT}/authenticate`,
         FETCH_TASKS: `${environment.API_ENDPOINT}/fetchtasks`,
+        TASKS: `${environment.API_ENDPOINT}/createnewtask`,
     },
     STATUS_CODES: {
         SUCCESS: 20001,

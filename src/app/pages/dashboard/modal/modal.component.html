@@ -1,0 +1,62 @@
+<div class="modal-header">
+  <h4 class="modal-title" id="modal-basic-title">Task Details</h4>
+  <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body">
+  <form #loginForm="ngForm" ngNativeValidate (submit)="passBack()">
+    <div class="row">
+      <div class="col">
+        <label for="taskName">Task Name</label>
+        <input type="text" class="form-control" id="taskName" placeholder="Task name" [(ngModel)]="task.taskName"
+          name="taskName">
+      </div>
+      <div class="col">
+        <label for="dateOfBirth">Due Date</label>
+        <div class="input-group">
+          <input id="dateOfBirth" class="form-control" [(ngModel)]="model" placeholder="yyyy-mm-dd" name="dp"
+            ngbDatepicker #dp="ngbDatepicker">
+          <div class="input-group-append">
+            <button class="btn btn-outline-secondary calendar" (click)="dp.toggle()" type="button">
+              <fa-icon [icon]="faCalendar"></fa-icon>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="taskDescription">Description</label>
+      <textarea class="form-control" id="taskDescription" name="taskDescription" (change)="error=null"
+        placeholder="Task Description" [(ngModel)]="task.taskDescription" rows="5" required>
+      </textarea>
+    </div>
+
+    <div class="row">
+      <div class="col">
+        <label for="status">Status</label>
+        <select class="form-control" [(ngModel)]="task.status" name="status" id="status">
+          <option value="New">New</option>
+          <option value="In Progress">In Progress</option>
+          <option value="Completed">Completed</option>
+        </select>
+      </div>
+      <div class="col">
+        <label for="label">Label</label>
+        <select class="form-control" [(ngModel)]="task.label" name="label" id="label">
+          <option>Shopping</option>
+          <option>In Progress</option>
+          <option>Completed</option>
+        </select>
+      </div>
+      <div class="col">
+        <label for="label">Priority</label>
+        <ngb-rating [(ngModel)]="task.priority" name="prioriy" [rate]="task.priority"></ngb-rating>
+      </div>
+    </div>
+
+  </form>
+  <br />
+  <button (click)="passBack()" type="submit" class="btn btn-primary w-100">Save Task</button>
+</div>

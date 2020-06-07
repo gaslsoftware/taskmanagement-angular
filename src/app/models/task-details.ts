@@ -11,7 +11,7 @@ export class TaskDetails {
         public completedDate: number| string,
         public userId: number| string,
         public priority: number| string,
-       
+        public isSelected: number,
     ) {}
 }
 

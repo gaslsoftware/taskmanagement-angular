@@ -1,15 +1,21 @@
 <ul ngbNav #nav="ngbNav" [(activeId)]="active" class="nav-tabs">
     <li [ngbNavItem]="1">
-      <a ngbNavLink>One</a>
-      <ng-template ngbNavContent>
-        <p>Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown aliqua, retro synth
+      <a ngbNavLink>All Tasks</a>
+      <ng-template ngbNavContent >
+        <div class="tsk"  [ngClass]="{'selectedd': task.isSelected}" *ngFor="let task of tasksArray;let i = index" (click)="handleClick($event,task,i)">
+         <br/>
+          <h6>{{task.taskName}}</h6>
+          <p>{{task.taskDescription | slice:0:100}} <span class="float-right">{{task.createdTime | date:'medium' }}</span></p>
+      
+        </div>
+        <!-- <p>Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown aliqua, retro synth
           master cleanse. Mustache cliche tempor, williamsburg carles vegan helvetica. Reprehenderit butcher retro
           keffiyeh dreamcatcher synth. Cosby sweater eu banh mi, qui irure terry richardson ex squid. Aliquip placeat
-          salvia cillum iphone. Seitan aliquip quis cardigan american apparel, butcher voluptate nisi qui.</p>
+          salvia cillum iphone. Seitan aliquip quis cardigan american apparel, butcher voluptate nisi qui.</p> -->
       </ng-template>
     </li>
     <li [ngbNavItem]="2">
-      <a ngbNavLink>Two</a>
+      <a ngbNavLink>Pending Tasks</a>
       <ng-template ngbNavContent>
         <p>Exercitation +1 labore velit, blog sartorial PBR leggings next level wes anderson artisan four loko
           farm-to-table craft beer twee. Qui photo booth letterpress, commodo enim craft beer mlkshk aliquip jean shorts
@@ -20,7 +26,7 @@
       </ng-template>
     </li>
     <li [ngbNavItem]="3">
-      <a ngbNavLink>Three</a>
+      <a ngbNavLink>Completed Tasks</a>
       <ng-template ngbNavContent>
         <p>Sed commodo, leo at suscipit dictum, quam est porttitor sapien, eget sodales nibh elit id diam. Nulla facilisi.
           Donec egestas ligula vitae odio interdum aliquet. Duis lectus turpis, luctus eget tincidunt eu, congue et odio.
@@ -35,4 +41,4 @@
   
   <div [ngbNavOutlet]="nav" class="mt-2"></div>
   
-  <pre>Active: {{ active }}</pre>
+  <!-- <pre>Active: {{ active }}</pre> -->

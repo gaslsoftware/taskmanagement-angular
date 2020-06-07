@@ -1,0 +1,9 @@
+::ng-deep .dropdown-menu show{
+display: block !important;;
+position: fixed !important;
+  z-index: 10522 !important;
+}
+::ng-deep ngb-datepicker.dropdown-menu {
+    padding: 0;
+    display: block!important;;
+}
