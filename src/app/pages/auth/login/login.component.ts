@@ -42,6 +42,7 @@ export class LoginComponent implements OnInit {
         console.log(res);
         console.log(res['jwt']);
         this.storageService.setSessionStorage('accessToken', res['jwt']);
+        this.storageService.setLocalStorage('username', this.username);
         // this.storageService.setSessionStorage('refresh_token', res['refresh_token']);
         // this.storageService.setSessionStorage('expirein', time);
         this.router.navigateByUrl('dashboard');

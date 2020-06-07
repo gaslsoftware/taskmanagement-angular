@@ -26,7 +26,7 @@ export class SidebarComponent implements OnInit {
     this.resetFormSubject.subscribe(response => {
       console.log(response);
       if (response) {
-        this.getAllTasks();
+        this.getAllTasks(this.activeTab);
         // Or do whatever operations you need.
       }
     });
@@ -34,16 +34,33 @@ export class SidebarComponent implements OnInit {
 
   tasksArray: TaskDetails[] = [];
   selectedId: number = 0;
-  public getAllTasks(id:number =1) {
+  activeTab: number = 1;
+  public getAllTasks(id: number = 1) {
     console.log('res');
-    if(id==1)
-    {
-      
+    let filters;
+    if (id == 1) {
+      filters = {
+      };
+    }
+    if (id == 2) {
+      filters = {
+        status: "New",
+      };
+    }
+    if (id == 3) {
+      filters = {
+        status: "In Progress",
+      };
+    }
+    if (id == 4) {
+      filters = {
+        status: "Completed",
+      };
     }
     this.dataService.parseApiCall(
       ApiConstants.URL.FETCH_TASKS,
       'post',
-      '{}',
+      filters,
       this.storageService.getTokenHeader()
     ).subscribe(res => {
       console.log(res);
@@ -65,33 +82,60 @@ export class SidebarComponent implements OnInit {
         );
         this.tasksArray.push(tasks);
       });
-      this.tasksArray[this.selectedId].isSelected = 1;
-      this.handleClick(1, this.tasksArray[this.selectedId], this.selectedId);
+      if (this.selectedId != undefined) {
+        this.tasksArray[this.selectedId].isSelected = 1;
+        this.handleClick(1, this.tasksArray[this.selectedId], this.selectedId);
+      }
+      else {
+        this.selectedId = 0;
+        this.tasksArray[this.selectedId].isSelected = 1;
+        this.handleClick(1, this.tasksArray[this.selectedId], this.selectedId);
+      }
       console.log(this.tasksArray);
     });
   }
   handleClick(event: any, task, index) {
+    if (this.selectedId != undefined) {
     this.tasksArray[this.selectedId].isSelected = 0;
     this.selectedId = index;
     task.isSelected = 1;
     this.onSelectTask.emit(task);
+    }
+    else
+    {
+      this.selectedId = 0;
+      this.tasksArray[this.selectedId].isSelected = 0;
+      this.selectedId = index;
+      task.isSelected = 1;
+      this.onSelectTask.emit(task);
+    }
     // console.log(task)
   }
 
   onNavChange(changeEvent: NgbNavChangeEvent) {
     console.log(changeEvent);
-    if(changeEvent.nextId == 1)
-    {
+    this.activeTab = changeEvent.nextId;
+    if (changeEvent.nextId == 1) {
+      this.selectedId = 0;
+      this.getAllTasks(1);
+    }
+    else if (changeEvent.nextId == 2) {
+      this.selectedId = 0;
+      this.getAllTasks(2);
+    }
+    else if (changeEvent.nextId == 3) {
+      this.selectedId = 0;
+      this.getAllTasks(3);
+    }
+    else if (changeEvent.nextId == 4) {
+      this.selectedId = 0;
+      this.getAllTasks(4);
+    }
+  }
 
-    }
-    else if(changeEvent.nextId == 1)
-    {
-      
-    }
-   else if(changeEvent.nextId == 1)
-    {
-      
-    }
+  public searchTask()
+  {
+    
   }
 
 }

@@ -1,10 +1,10 @@
 <div class="container-fluid">
     <div class="row">
-        <div class="col-md-3" style="border-right: solid;">
+        <div class="col-md-3" style="border-right: solid;border-top: solid;">
             <app-sidebar (onSelectTask)="selectedTask($event)" [resetFormSubject]="resetFormSubject.asObservable()">
             </app-sidebar>
         </div>
-        <div class="col-md-9">
+        <div class="col-md-9" style="border-top: solid;">
             <button type="button" class="btn btn-danger mt-5" (click)="addTask()">Add New</button>
             <div *ngIf="task" class="row">
                 <div class="col-md-12 px-5 ">

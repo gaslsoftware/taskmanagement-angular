@@ -2,10 +2,12 @@
     <li [ngbNavItem]="1">
      <a ngbNavLink>All Tasks</a>
       <ng-template ngbNavContent >
+        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success my-2 my-sm-0" (click)="searchTask()">Search</button>
         <div class="tsk"  [ngClass]="{'selectedd': task.isSelected}" *ngFor="let task of tasksArray;let i = index" (click)="handleClick($event,task,i)">
          <br/>
           <h6>{{task.taskName}}</h6>
-          <p>{{task.taskDescription | slice:0:100}} <span class="float-right">{{task.createdTime | date:'medium' }}</span></p>
+          <p>{{task.taskDescription | slice:0:50}} <span class="float-right">{{task.createdTime | date:'medium' }}</span></p>
       
         </div>
         <!-- <p>Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown aliqua, retro synth
@@ -17,37 +19,32 @@
     <li [ngbNavItem]="2">
       <a ngbNavLink>New Tasks</a>
       <ng-template ngbNavContent>
-        <p>Exercitation +1 labore velit, blog sartorial PBR leggings next level wes anderson artisan four loko
-          farm-to-table craft beer twee. Qui photo booth letterpress, commodo enim craft beer mlkshk aliquip jean shorts
-          ullamco ad vinyl cillum PBR. Homo nostrud organic, assumenda labore aesthetic magna delectus mollit. Keytar
-          helvetica VHS salvia yr, vero magna velit sapiente labore stumptown. Vegan fanny pack odio cillum wes anderson
-          8-bit, sustainable jean shorts beard ut DIY ethical culpa terry richardson biodiesel. Art party scenester
-          stumptown, tumblr butcher vero sint qui sapiente accusamus tattooed echo park.</p>
+        <div class="tsk"  [ngClass]="{'selectedd': task.isSelected}" *ngFor="let task of tasksArray;let i = index" (click)="handleClick($event,task,i)">
+          <br/>
+           <h6>{{task.taskName}}</h6>
+           <p>{{task.taskDescription | slice:0:50}} <span class="float-right">{{task.createdTime | date:'medium' }}</span></p>    
+         </div>
       </ng-template>
     </li>
     <li [ngbNavItem]="3">
       <a ngbNavLink>In Progress Tasks</a>
       <ng-template ngbNavContent>
-        <p>Sed commodo, leo at suscipit dictum, quam est porttitor sapien, eget sodales nibh elit id diam. Nulla facilisi.
-          Donec egestas ligula vitae odio interdum aliquet. Duis lectus turpis, luctus eget tincidunt eu, congue et odio.
-          Duis pharetra et nisl at faucibus. Quisque luctus pulvinar arcu, et molestie lectus ultrices et. Sed diam urna,
-          egestas ut ipsum vel, volutpat volutpat neque. Praesent fringilla tortor arcu. Vivamus faucibus nisl enim, nec
-          tristique ipsum euismod facilisis. Morbi ut bibendum est, eu tincidunt odio. Orci varius natoque penatibus et
-          magnis dis parturient montes, nascetur ridiculus mus. Mauris aliquet odio ac lorem aliquet ultricies in eget
-          neque. Phasellus nec tortor vel tellus pulvinar feugiat.</p>
+        <div class="tsk"  [ngClass]="{'selectedd': task.isSelected}" *ngFor="let task of tasksArray;let i = index" (click)="handleClick($event,task,i)">
+          <br/>
+           <h6>{{task.taskName}}</h6>
+           <p>{{task.taskDescription | slice:0:50}} <span class="float-right">{{task.createdTime | date:'medium' }}</span></p>    
+         </div>
       </ng-template>
     </li>
 
     <li [ngbNavItem]="4">
       <a ngbNavLink>Completed Tasks</a>
       <ng-template ngbNavContent>
-        <p>Sed commodo, leo at suscipit dictum, quam est porttitor sapien, eget sodales nibh elit id diam. Nulla facilisi.
-          Donec egestas ligula vitae odio interdum aliquet. Duis lectus turpis, luctus eget tincidunt eu, congue et odio.
-          Duis pharetra et nisl at faucibus. Quisque luctus pulvinar arcu, et molestie lectus ultrices et. Sed diam urna,
-          egestas ut ipsum vel, volutpat volutpat neque. Praesent fringilla tortor arcu. Vivamus faucibus nisl enim, nec
-          tristique ipsum euismod facilisis. Morbi ut bibendum est, eu tincidunt odio. Orci varius natoque penatibus et
-          magnis dis parturient montes, nascetur ridiculus mus. Mauris aliquet odio ac lorem aliquet ultricies in eget
-          neque. Phasellus nec tortor vel tellus pulvinar feugiat.</p>
+        <div class="tsk"  [ngClass]="{'selectedd': task.isSelected}" *ngFor="let task of tasksArray;let i = index" (click)="handleClick($event,task,i)">
+          <br/>
+           <h6>{{task.taskName}}</h6>
+           <p>{{task.taskDescription | slice:0:50}} <span class="float-right">{{task.createdTime | date:'medium' }}</span></p>    
+         </div>
       </ng-template>
     </li>
   </ul>
