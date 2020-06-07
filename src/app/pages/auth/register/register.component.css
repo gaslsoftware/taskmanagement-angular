@@ -1,0 +1,9 @@
+.login-title {
+    font-size: 35px;
+    font-weight: 700;
+    color: #555;
+}
+.login-error-display {
+    text-align: center;
+    width: 77%;
+}

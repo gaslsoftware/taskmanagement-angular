@@ -1,0 +1,18 @@
+.login-title {
+    font-size: 35px;
+    font-weight: 700;
+    color: #555;
+}
+.login-error-display {
+    text-align: center;
+    width: 77%;
+}
+.usercreatemsg {
+    font-size : 25px;
+    font-weight : 500;
+    color: #555;
+    text-align : center;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+
+}

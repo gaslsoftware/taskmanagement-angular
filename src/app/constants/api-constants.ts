@@ -5,6 +5,7 @@ import { environment } from '../../environments/environment';
 export const ApiConstants = {
     URL : {
         LOGIN: `${environment.API_ENDPOINT}/authenticate`,
+        REGISTER: `${environment.API_ENDPOINT}/createnewuser`,
         FETCH_TASKS: `${environment.API_ENDPOINT}/fetchtasks`,
         TASKS: `${environment.API_ENDPOINT}/createnewtask`,
     },
