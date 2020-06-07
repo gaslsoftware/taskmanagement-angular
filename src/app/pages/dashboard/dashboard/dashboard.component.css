@@ -5,3 +5,32 @@
 .modal-xl .modal-lg {
     max-width: 90%;
   }
+
+  .task-display label {
+      font-size: 22px;
+      font-weight : 450;
+  }
+  .task-display p {
+    font-size: 14px;
+}
+
+  .task-name-header {
+      text-align: center;
+      text-transform: uppercase;
+      font-size: 45px;
+  }
+  .action-buttons {
+    min-height : 92px;
+}
+.add-new {
+    margin-left :3%;
+}
+.edit-btn {
+    margin-right : 3%;
+}
+.taskDescription {
+    font-size : 40px;
+}
+.rating-font {
+    font-size: 2rem;
+}

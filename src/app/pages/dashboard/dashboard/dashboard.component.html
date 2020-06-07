@@ -1,21 +1,61 @@
 <div class="container-fluid">
     <div class="row">
-        <div class="col-md-3" style="border-right: solid;border-top: solid;">
+        <div class="col-md-3" style="border-right: solid;">
             <app-sidebar (onSelectTask)="selectedTask($event)" [resetFormSubject]="resetFormSubject.asObservable()">
             </app-sidebar>
         </div>
-        <div class="col-md-9" style="border-top: solid;">
-            <button type="button" class="btn btn-danger mt-5" (click)="addTask()">Add New</button>
+        <div class="col-md-9">
+            <div class="display-flex action-buttons">
+                <button type="button" class="btn btn-danger mt-5 float-left add-new" (click)="addTask()">Add
+                    New</button>
+                <button type="button" class="btn btn-primary mt-5 float-right edit-btn"
+                    (click)="editTask()">Edit</button>
+            </div>
             <div *ngIf="task" class="row">
                 <div class="col-md-12 px-5 ">
-                    <div class="pt-5 taskname">
-                        <h1>{{task.taskName}}</h1>
-                        <button type="button" class="btn btn-primary float-right" (click)="editTask()">Edit</button>
-                    </div>
-                    <p>{{task.taskDescription}}</p>
+                    <div class="card">
+                        <header class="card-header">
+                            <h2 class="card-title mt-2 task-name-header">{{task.taskName}}</h2>
+                            <i class="fas fa-edit"></i>
+
+                        </header>
+                        <article class="card-body mt-2">
+                            <form>
+                                <div class="col form-group task-display">
+                                    <h4>{{task.taskDescription}}</h4>
+                                </div> <!-- form-group end.// -->
+                                <div class = "display-flex">
+                                <div class="col form-group task-display">
+                                    <label>Status :</label>
+                                    <p>{{task.status}}</p>
+                                </div> <!-- form-group end.// -->
+                                <div class="col form-group task-display">
+                                    <label>Due on :</label>
+                                    <p>{{task.dueDate | date:'medium' }}</p>
+                                </div>
+                                </div>
+                                <div class="col form-group task-display">
+                                    <label>Priority</label>
+                                    <div>
+                                        <ngb-rating class = "rating-font" [(ngModel)]="task.priority" name="prioriy" [rate]="task.priority"
+                                            readonly=true>
+                                        </ngb-rating>
+                                    </div>
+                                </div>
+                                <div class="col form-group task-display">
+                                    <label>Label</label>
+                                    <p>{{task.label}}</p>
+                                </div><!-- form-group end.// -->
+                            </form>
+                        </article> <!-- card-body end .// -->
+                    </div> <!-- card.// -->
+
+
+
                 </div>
             </div>
+            <div *ngIf="!task">
+                <h1>No tasks to show</h1>
 
+            </div>
         </div>
-    </div>
-</div>
