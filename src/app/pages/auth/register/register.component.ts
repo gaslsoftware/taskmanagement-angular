@@ -57,7 +57,7 @@ export class RegisterComponent implements OnInit {
         } 
     }, (err: HttpErrorResponse) => {
       //   this.buttonClickStatus = true;
-      console.log(err.status);
+      console.log(err.status); 
       console.log("Something went wrong1");
       if (err.status === 401 || err.status === 403) {
 
