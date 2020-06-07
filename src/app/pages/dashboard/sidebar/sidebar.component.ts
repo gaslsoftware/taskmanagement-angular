@@ -4,6 +4,7 @@ import { StorageService } from 'src/app/services/storage.service';
 import { TaskDetails } from 'src/app/models/task-details';
 import { ApiConstants } from 'src/app/constants/api-constants';
 import { Subject } from "rxjs";
+import { NgbNavChangeEvent } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-sidebar',
@@ -33,8 +34,12 @@ export class SidebarComponent implements OnInit {
 
   tasksArray: TaskDetails[] = [];
   selectedId: number = 0;
-  public getAllTasks() {
+  public getAllTasks(id:number =1) {
     console.log('res');
+    if(id==1)
+    {
+      
+    }
     this.dataService.parseApiCall(
       ApiConstants.URL.FETCH_TASKS,
       'post',
@@ -71,6 +76,22 @@ export class SidebarComponent implements OnInit {
     task.isSelected = 1;
     this.onSelectTask.emit(task);
     // console.log(task)
+  }
+
+  onNavChange(changeEvent: NgbNavChangeEvent) {
+    console.log(changeEvent);
+    if(changeEvent.nextId == 1)
+    {
+
+    }
+    else if(changeEvent.nextId == 1)
+    {
+      
+    }
+   else if(changeEvent.nextId == 1)
+    {
+      
+    }
   }
 
 }
