@@ -40,6 +40,7 @@ export class SidebarComponent implements OnInit {
   //dateFilter
   isDateChecked:boolean;
   dateDsc:boolean;
+  isAsc:number=1;
   dateAsc:boolean;
   isPriorityChecked:boolean;
   public getAllTasks(id: number = 1) {
@@ -92,6 +93,11 @@ export class SidebarComponent implements OnInit {
     }
 
 
+    if (id == 6) {
+      filters = {
+        "dueDate":this.isAsc,
+      };
+    }
     this.dataService.parseApiCall(
       ApiConstants.URL.FETCH_TASKS,
       'post',
@@ -172,8 +178,29 @@ export class SidebarComponent implements OnInit {
   {
       this.getAllTasks(5);
   }
-  public checkDateValue(event: any){
+  public checkDateValue(event: any,type:any="radio"){
     console.log(event);
+    if(this.isDateChecked == true)
+    {
+      if(event == true && type == "radio")
+      {
+        this.isAsc=1;
+        this.getAllTasks(6);
+      }
+      else
+      {
+        this.isAsc=0;
+        this.getAllTasks(6);
+      }
+    }
+    else
+    {
+      this.getAllTasks();
+    }
+    console.log(this.isDateChecked);
+    console.log(this.dateAsc);
+    console.log(this.dateDsc);
+
  }
  public checkPriorityValue(event: any){
   console.log(event);

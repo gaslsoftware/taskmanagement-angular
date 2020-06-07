@@ -17,15 +17,15 @@
             <div class="row ml-3 mt-2 ">
               <div class="col">
                     <div class="form-check form-check-inline">
-                      <input class="form-check-input" type="checkbox" [(ngModel)]="isDateChecked" (change)="checkDateValue(isDateChecked?'1':'0')" name="dateFilter" id="dateFilter" value="option1">
+                      <input class="form-check-input" type="checkbox" [(ngModel)]="isDateChecked" (change)="checkDateValue(isDateChecked?'1':'0','checkbox')" name="dateFilter" id="dateFilter" value="option1">
                       <label class="form-check-label font-weight-bold" for="dateFilter" style="font-size: 1.2rem;">DueDate </label>
                     </div>
                       <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="dateOptions" [(ngModel)]="dateAsc" (change)="checkDateValue(dateAsc?'1':'0')"	  id="dateAsc" value="dateAsc">
+                        <input class="form-check-input" type="radio" name="dateOptions" [(ngModel)]="dateAsc" (change)="checkDateValue(dateAsc?'1':'0')"	  id="dateAsc" value="1">
                         <label class="form-check-label" for="dateAsc">Ascending</label>
                       </div>
                       <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="dateOptions" [(ngModel)]="dateDsc" (change)="checkDateValue(dateDsc?'1':'0')" id="dateDsc" value="dateDsc">
+                        <input class="form-check-input" type="radio" name="dateOptions" [(ngModel)]="dateDsc" (change)="checkDateValue(dateDsc?'0':'1')" id="dateDsc" value="0">
                         <label class="form-check-label" for="dateDsc">Descending</label>
                       </div>
                     
@@ -53,7 +53,7 @@
             (click)="handleClick($event,task,i)">
             <br />
             <h6>{{task.taskName}}</h6>
-            <p>{{task.taskDescription | slice:0:50}} <span class="float-right">{{task.createdTime | date:'medium' }}</span>
+            <p>{{task.taskDescription | slice:0:50}} <span class="float-right">{{task.dueDate | date:'medium' }}</span>
             </p>
 
           </div>
