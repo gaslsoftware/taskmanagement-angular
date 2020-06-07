@@ -203,6 +203,7 @@ export class SidebarComponent implements OnInit {
 
  }
  public checkPriorityValue(event: any){
+   this.isDateChecked=false;
   console.log(event);
 }
  

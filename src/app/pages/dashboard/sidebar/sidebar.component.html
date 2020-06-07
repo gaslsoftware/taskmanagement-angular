@@ -31,7 +31,7 @@
                     
                   </div>
             </div>
-            <div class="row ml-3 mt-3 ">
+            <!-- <div class="row ml-3 mt-3 ">
               <div class="col">
                     <div class="form-check form-check-inline">
                       <input class="form-check-input" type="checkbox" [(ngModel)]="isPriorityChecked" (change)="checkPriorityValue(isPriorityChecked?'1':'0')" name="isPriorityChecked" id="isPriorityChecked" value="isPriorityChecked">
@@ -44,10 +44,10 @@
                       <div class="form-check form-check-inline">
                         <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
                         <label class="form-check-label" for="inlineRadio2">Descending</label>
-                      </div>
-                    
+                      </div> -->
+<!--                     
                   </div>
-            </div>
+            </div> -->
           </form>
           <div class="tsk" [ngClass]="{'selectedd': task.isSelected}" *ngFor="let task of tasksArray;let i = index"
             (click)="handleClick($event,task,i)">
