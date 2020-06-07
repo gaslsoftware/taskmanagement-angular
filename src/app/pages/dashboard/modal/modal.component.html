@@ -45,9 +45,10 @@
       <div class="col">
         <label for="label">Label</label>
         <select class="form-control" [(ngModel)]="task.label" name="label" id="label">
+          <option>Personal</option>
+          <option>Work</option>
           <option>Shopping</option>
-          <option>In Progress</option>
-          <option>Completed</option>
+          <option>Others</option>
         </select>
       </div>
       <div class="col">

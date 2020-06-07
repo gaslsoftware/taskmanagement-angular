@@ -18,3 +18,8 @@
       border-bottom: 1px solid gainsboro ;
       padding-bottom: 5px;
   }
+  .form-check-label {
+     padding-left: 0px;
+     padding-right: 2.25rem;
+     
+  }

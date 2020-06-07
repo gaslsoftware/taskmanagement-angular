@@ -1,54 +1,107 @@
-<ul ngbNav #nav="ngbNav" (navChange)="onNavChange($event)"  [(activeId)]="active" class="nav-tabs">
-    <li [ngbNavItem]="1">
-     <a ngbNavLink>All Tasks</a>
-      <ng-template ngbNavContent >
-        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-success my-2 my-sm-0" (click)="searchTask()">Search</button>
-        <div class="tsk"  [ngClass]="{'selectedd': task.isSelected}" *ngFor="let task of tasksArray;let i = index" (click)="handleClick($event,task,i)">
-         <br/>
-          <h6>{{task.taskName}}</h6>
-          <p>{{task.taskDescription | slice:0:50}} <span class="float-right">{{task.createdTime | date:'medium' }}</span></p>
-      
-        </div>
-        <!-- <p>Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown aliqua, retro synth
-          master cleanse. Mustache cliche tempor, williamsburg carles vegan helvetica. Reprehenderit butcher retro
-          keffiyeh dreamcatcher synth. Cosby sweater eu banh mi, qui irure terry richardson ex squid. Aliquip placeat
-          salvia cillum iphone. Seitan aliquip quis cardigan american apparel, butcher voluptate nisi qui.</p> -->
-      </ng-template>
-    </li>
-    <li [ngbNavItem]="2">
-      <a ngbNavLink>New Tasks</a>
-      <ng-template ngbNavContent>
-        <div class="tsk"  [ngClass]="{'selectedd': task.isSelected}" *ngFor="let task of tasksArray;let i = index" (click)="handleClick($event,task,i)">
-          <br/>
-           <h6>{{task.taskName}}</h6>
-           <p>{{task.taskDescription | slice:0:50}} <span class="float-right">{{task.createdTime | date:'medium' }}</span></p>    
-         </div>
-      </ng-template>
-    </li>
-    <li [ngbNavItem]="3">
-      <a ngbNavLink>In Progress Tasks</a>
-      <ng-template ngbNavContent>
-        <div class="tsk"  [ngClass]="{'selectedd': task.isSelected}" *ngFor="let task of tasksArray;let i = index" (click)="handleClick($event,task,i)">
-          <br/>
-           <h6>{{task.taskName}}</h6>
-           <p>{{task.taskDescription | slice:0:50}} <span class="float-right">{{task.createdTime | date:'medium' }}</span></p>    
-         </div>
-      </ng-template>
-    </li>
+    <ul ngbNav #nav="ngbNav" (navChange)="onNavChange($event)" [(activeId)]="active" class="nav-tabs">
+      <li [ngbNavItem]="1">
+        <a ngbNavLink>All Tasks</a>
+        <ng-template ngbNavContent>
+          <form #loginForm="ngForm" class="pb-3">
+            <div class="row">
+              <div class="col-sm-9">
+                <input class="form-control mr-sm-2" type="search" [(ngModel)]="searchText" name="search"
+                  placeholder="Search" aria-label="Search">
+              </div>
+              <div class="col-sm-3">
+                <button class="btn btn-outline-success" (click)="searchTask()">Search</button>
+              </div>
+            </div>
+            <div class="row py-2 ml-1 px-1" style="font-size: 1.5rem;">Filter With
+            </div>
+            <div class="row ml-3 mt-2 ">
+              <div class="col">
+                    <div class="form-check form-check-inline">
+                      <input class="form-check-input" type="checkbox" [(ngModel)]="isDateChecked" (change)="checkDateValue(isDateChecked?'1':'0')" name="dateFilter" id="dateFilter" value="option1">
+                      <label class="form-check-label font-weight-bold" for="dateFilter" style="font-size: 1.2rem;">DueDate </label>
+                    </div>
+                      <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="dateOptions" [(ngModel)]="dateAsc" (change)="checkDateValue(dateAsc?'1':'0')"	  id="dateAsc" value="dateAsc">
+                        <label class="form-check-label" for="dateAsc">Ascending</label>
+                      </div>
+                      <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="dateOptions" [(ngModel)]="dateDsc" (change)="checkDateValue(dateDsc?'1':'0')" id="dateDsc" value="dateDsc">
+                        <label class="form-check-label" for="dateDsc">Descending</label>
+                      </div>
+                    
+                  </div>
+            </div>
+            <div class="row ml-3 mt-3 ">
+              <div class="col">
+                    <div class="form-check form-check-inline">
+                      <input class="form-check-input" type="checkbox" [(ngModel)]="isPriorityChecked" (change)="checkPriorityValue(isPriorityChecked?'1':'0')" name="isPriorityChecked" id="isPriorityChecked" value="isPriorityChecked">
+                      <label class="form-check-label font-weight-bold" for="isPriorityChecked" style="font-size: 1.2rem;">Priority</label>
+                    </div>
+                      <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
+                        <label class="form-check-label" for="inlineRadio1">Ascending</label>
+                      </div>
+                      <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
+                        <label class="form-check-label" for="inlineRadio2">Descending</label>
+                      </div>
+                    
+                  </div>
+            </div>
+          </form>
+          <div class="tsk" [ngClass]="{'selectedd': task.isSelected}" *ngFor="let task of tasksArray;let i = index"
+            (click)="handleClick($event,task,i)">
+            <br />
+            <h6>{{task.taskName}}</h6>
+            <p>{{task.taskDescription | slice:0:50}} <span class="float-right">{{task.createdTime | date:'medium' }}</span>
+            </p>
 
-    <li [ngbNavItem]="4">
-      <a ngbNavLink>Completed Tasks</a>
-      <ng-template ngbNavContent>
-        <div class="tsk"  [ngClass]="{'selectedd': task.isSelected}" *ngFor="let task of tasksArray;let i = index" (click)="handleClick($event,task,i)">
-          <br/>
-           <h6>{{task.taskName}}</h6>
-           <p>{{task.taskDescription | slice:0:50}} <span class="float-right">{{task.createdTime | date:'medium' }}</span></p>    
-         </div>
-      </ng-template>
-    </li>
-  </ul>
-  
-  <div [ngbNavOutlet]="nav" class="mt-2"></div>
-  
-  <!-- <pre>Active: {{ active }}</pre> -->
+          </div>
+          <!-- <p>Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown aliqua, retro synth
+              master cleanse. Mustache cliche tempor, williamsburg carles vegan helvetica. Reprehenderit butcher retro
+              keffiyeh dreamcatcher synth. Cosby sweater eu banh mi, qui irure terry richardson ex squid. Aliquip placeat
+              salvia cillum iphone. Seitan aliquip quis cardigan american apparel, butcher voluptate nisi qui.</p> -->
+        </ng-template>
+      </li>
+      <li [ngbNavItem]="2">
+        <a ngbNavLink>New Tasks</a>
+        <ng-template ngbNavContent>
+          <div class="tsk" [ngClass]="{'selectedd': task.isSelected}" *ngFor="let task of tasksArray;let i = index"
+            (click)="handleClick($event,task,i)">
+            <br />
+            <h6>{{task.taskName}}</h6>
+            <p>{{task.taskDescription | slice:0:50}} <span class="float-right">{{task.createdTime | date:'medium' }}</span>
+            </p>
+          </div>
+        </ng-template>
+      </li>
+      <li [ngbNavItem]="3">
+        <a ngbNavLink>In Progress Tasks</a>
+        <ng-template ngbNavContent>
+          <div class="tsk" [ngClass]="{'selectedd': task.isSelected}" *ngFor="let task of tasksArray;let i = index"
+            (click)="handleClick($event,task,i)">
+            <br />
+            <h6>{{task.taskName}}</h6>
+            <p>{{task.taskDescription | slice:0:50}} <span class="float-right">{{task.createdTime | date:'medium' }}</span>
+            </p>
+          </div>
+        </ng-template>
+      </li>
+
+      <li [ngbNavItem]="4">
+        <a ngbNavLink>Completed Tasks</a>
+        <ng-template ngbNavContent>
+          <div class="tsk" [ngClass]="{'selectedd': task.isSelected}" *ngFor="let task of tasksArray;let i = index"
+            (click)="handleClick($event,task,i)">
+            <br />
+            <h6>{{task.taskName}}</h6>
+            <p>{{task.taskDescription | slice:0:50}} <span class="float-right">{{task.createdTime | date:'medium' }}</span>
+            </p>
+          </div>
+        </ng-template>
+      </li>
+    </ul>
+
+    <div [ngbNavOutlet]="nav" class="mt-2"></div>
+
+    <!-- <pre>Active: {{ active }}</pre> -->
