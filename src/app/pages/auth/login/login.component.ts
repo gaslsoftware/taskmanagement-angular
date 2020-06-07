@@ -46,6 +46,12 @@ export class LoginComponent implements OnInit {
         // this.storageService.setSessionStorage('expirein', time);
         this.router.navigateByUrl('dashboard');
         }
+        else {
+      
+            console.log("Something went wrong");
+            this.type = 'danger'
+            this.loginerror = 'Invalid username or password';
+          } 
       }, (err: HttpErrorResponse) => {
         //   this.buttonClickStatus = true;
         console.log(err.status);
@@ -62,5 +68,9 @@ export class LoginComponent implements OnInit {
           setTimeout(() => this.error = null, 5000);
         }
       });
+  }
+
+  public signup() {
+    this.router.navigateByUrl('register');
   }
 }

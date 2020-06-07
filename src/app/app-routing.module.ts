@@ -4,6 +4,8 @@ import { LoginComponent } from './pages/auth/login/login.component';
 import { MainComponent } from './main/main.component';
 import { DashboardComponent } from './pages/dashboard/dashboard/dashboard.component';
 import { AuthGuardService } from './services/guard/auth-guard.service';
+import { RegisterComponent } from './pages/auth/register/register.component';
+import { CreateusersuccessComponent } from './pages/auth/createusersuccess/createusersuccess.component';
 
 
 const routes: Routes = [{
@@ -14,6 +16,14 @@ const routes: Routes = [{
 {
   path: 'login',
   component: LoginComponent
+},
+{
+  path: 'register',
+  component: RegisterComponent
+},
+{
+  path: 'success',
+  component: CreateusersuccessComponent
 },
 {
   path: '',
