@@ -12,7 +12,6 @@ import { NgbNavChangeEvent } from '@ng-bootstrap/ng-bootstrap';
   styleUrls: ['./sidebar.component.css']
 })
 export class SidebarComponent implements OnInit {
-  active = 1;
 
   constructor(private dataService: DataService,
     private storageService: StorageService) { }
@@ -32,9 +31,17 @@ export class SidebarComponent implements OnInit {
     });
   }
 
+  
   tasksArray: TaskDetails[] = [];
   selectedId: number = 0;
   activeTab: number = 1;
+  active = 1;
+  searchText:string;
+  //dateFilter
+  isDateChecked:boolean;
+  dateDsc:boolean;
+  dateAsc:boolean;
+  isPriorityChecked:boolean;
   public getAllTasks(id: number = 1) {
     console.log('res');
     let filters;
@@ -57,6 +64,34 @@ export class SidebarComponent implements OnInit {
         status: "Completed",
       };
     }
+
+    if (id == 5) {
+      if (this.activeTab == 1) {
+        filters = {
+          "taskName":this.searchText
+        };
+      }
+      if (this.activeTab == 2) {
+        filters = {
+          status: "New",
+          "taskName":this.searchText
+        };
+      }
+      if (this.activeTab == 3) {
+        filters = {
+          status: "In Progress",
+          "taskName":this.searchText
+        };
+      }
+      if (this.activeTab == 4) {
+        filters = {
+          status: "Completed",
+          "taskName":this.searchText
+        };
+      }
+    }
+
+
     this.dataService.parseApiCall(
       ApiConstants.URL.FETCH_TASKS,
       'post',
@@ -135,7 +170,13 @@ export class SidebarComponent implements OnInit {
 
   public searchTask()
   {
-    
+      this.getAllTasks(5);
   }
-
+  public checkDateValue(event: any){
+    console.log(event);
+ }
+ public checkPriorityValue(event: any){
+  console.log(event);
+}
+ 
 }
